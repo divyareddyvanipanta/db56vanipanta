@@ -12,8 +12,17 @@ exports.handbag_list = async function(req, res) {
  res.send('NOT IMPLEMENTED: Handbag list');
 };
 // for a specific handbag.
-exports.handbag_detail = function(req, res) {
- res.send('NOT IMPLEMENTED: Handbag detail: ' + req.params.id);
+exports.handbag_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await handbag.findById(req.params.id)
+        res.send(result)
+    } 
+    catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+ //res.send('NOT IMPLEMENTED: Handbag detail: ' + req.params.id);
 };
 // Handle handbag create on POST.
 exports.handbag_create_post = async function(req, res) {
@@ -37,11 +46,38 @@ exports.handbag_create_post = async function(req, res) {
 // res.send('NOT IMPLEMENTED: handbag create POST');
 };
 // Handle handbag delete form on DELETE.
-exports.handbag_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: handbag delete DELETE ' + req.params.id);
+exports.handbag_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await handbag.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
+ //res.send('NOT IMPLEMENTED: handbag delete DELETE ' + req.params.id);
 };
 // Handle handbag update form on PUT.
-exports.handbag_update_put = function(req, res) {
+exports.handbag_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`);
+    try {
+        let toUpdate = await handbag.findById(req.params.id);
+        // Do updates of properties
+        if (req.body.bag_name)
+            toUpdate.bag_name = req.body.bag_name;
+        if (req.body.bag_color)
+            toUpdate.bag_color = req.body.bag_color;
+        if (req.body.bag_cost)
+            toUpdate.bag_cost = req.body.bag_cost;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result);
+        res.send(result);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
  res.send('NOT IMPLEMENTED: handbag update PUT' + req.params.id);
 };
 
