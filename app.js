@@ -4,11 +4,43 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var handbagRouter = require('./routes/handbag');
 var addModsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var Handbag = require("./models/handbag");
+var resourceRouter = require("./routes/resource");
+
+// We can seed the collection if needed on server start
+async function recreateDB(){
+ // Delete everything
+ await Handbag.deleteMany();
+ let instance1 = new
+Handbag({bag_name:"Louis Vuitton", bag_color:'Black', bag_cost:200});
+ instance1.save( function(err,doc) {
+ if(err) return console.error(err);
+ console.log("First object saved")
+ });
+ let instance2 = new
+ Handbag({bag_name:"Michael Kors", bag_color:'Brown', bag_cost:250});
+ instance2.save( function(err,doc) {
+  if(err) return console.error(err);
+  console.log("Second object saved")
+  });
+  let instance3 = new
+  Handbag({bag_name:"Kate Spade", bag_color:'Burgandy', bag_cost:150});
+   instance3.save( function(err,doc) {
+   if(err) return console.error(err);
+   console.log("Third object saved")
+   });
+}
+let reseed = true;
+if (reseed) { recreateDB();}
 
 var app = express();
 
@@ -27,6 +59,7 @@ app.use('/users', usersRouter);
 app.use('/handbag', handbagRouter);
 app.use('/addmods', addModsRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,5 +76,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
 
 module.exports = app;
