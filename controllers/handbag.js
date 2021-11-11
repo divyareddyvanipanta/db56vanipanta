@@ -15,7 +15,7 @@ exports.handbag_list = async function(req, res) {
 exports.handbag_detail = async function(req, res) {
     console.log("detail" + req.params.id)
     try {
-        result = await handbag.findById(req.params.id)
+        result = await Handbag.findById(req.params.id)
         res.send(result)
     } 
     catch (error) {
@@ -49,7 +49,7 @@ exports.handbag_create_post = async function(req, res) {
 exports.handbag_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
-        result = await handbag.findByIdAndDelete(req.params.id)
+        result = await Handbag.findByIdAndDelete(req.params.id)
         console.log("Removed " + result)
         res.send(result)
     } catch (err) {
@@ -62,7 +62,7 @@ exports.handbag_delete = async function(req, res) {
 exports.handbag_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`);
     try {
-        let toUpdate = await handbag.findById(req.params.id);
+        let toUpdate = await Handbag.findById(req.params.id);
         // Do updates of properties
         if (req.body.bag_name)
             toUpdate.bag_name = req.body.bag_name;
@@ -86,7 +86,7 @@ exports.handbag_update_put = async function(req, res) {
 exports.handbag_view_all_Page = async function(req, res) {
     try{
     theHandbags = await Handbag.find();
-    res.render('handbags', { title: 'Handbags Search Results', results: theHandbags });
+    res.render('handbag', { title: 'Handbags Search Results', results: theHandbags });
     }
     catch(err){
     res.status(500);

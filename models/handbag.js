@@ -4,5 +4,4 @@ bag_name: String,
 bag_color: String,
 bag_cost: Number
 })
-module.exports = mongoose.model("Handbag",
-handbagSchema)
+module.exports = mongoose.model("Handbag",handbagSchema)

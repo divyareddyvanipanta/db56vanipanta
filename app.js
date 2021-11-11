@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const connectionString = process.env.MONGO_CON
+const connectionString = "mongodb+srv://divyavanipanta:reddyy%40123@cluster0.8uinu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose = require('mongoose');
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -13,8 +13,8 @@ var usersRouter = require('./routes/users');
 var handbagRouter = require('./routes/handbag');
 var addModsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
-var Handbag = require("./models/handbag");
-var resourceRouter = require("./routes/resource");
+var Handbag = require('./models/handbag');
+var resourceRouter = require('./routes/resource');
 
 // We can seed the collection if needed on server start
 async function recreateDB(){
@@ -39,7 +39,7 @@ Handbag({bag_name:"Louis Vuitton", bag_color:'Black', bag_cost:200});
    console.log("Third object saved")
    });
 }
-let reseed = true;
+let reseed = false;
 if (reseed) { recreateDB();}
 
 var app = express();
