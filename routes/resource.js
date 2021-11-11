@@ -8,14 +8,14 @@ var handbag_controller = require('../controllers/handbag');
 router.get('/', api_controller.api);
 /// COSTUME ROUTES ///
 // POST request for creating a Handbag.
-router.post('/resource/handbags', handbag_controller.handbag_create_post);
+router.post('/handbags', handbag_controller.handbag_create_post);
 // DELETE request to delete Handbag.
-router.delete('/resource/handbags/:id', handbag_controller.handbag_delete);
+router.delete('/handbags/:id', handbag_controller.handbag_delete);
 // PUT request to update Handbag.
-router.put('/resource/handbags/:id',
+router.put('/handbags/:id',
 handbag_controller.handbag_update_put);
 // GET request for one Handbag.
-router.get('/resource/handbags/:id', handbag_controller.handbag_detail);
+router.get('/handbags/:id', handbag_controller.handbag_detail);
 // GET request for list of all Handbag items.
-router.get('/resource/handbags', handbag_controller.handbag_list);
+router.get('/handbags', handbag_controller.handbag_list);
 module.exports = router;
