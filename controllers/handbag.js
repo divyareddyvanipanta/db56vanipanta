@@ -78,7 +78,7 @@ exports.handbag_update_put = async function(req, res) {
         res.status(500);
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
     }
- res.send('NOT IMPLEMENTED: handbag update PUT' + req.params.id);
+    //res.send('NOT IMPLEMENTED: handbag update PUT' + req.params.id);
 };
 
 // VIEWS
