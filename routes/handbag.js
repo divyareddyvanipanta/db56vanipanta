@@ -7,6 +7,10 @@ var router = express.Router();
 //   res.render('handbag', { title: 'Search Results Hand Bags' });
 // });
 
-/* GET costumes */
+/* GET handbags */
 router.get('/', handbag_controlers.handbag_view_all_Page );
+
+// GET request for one handbag.
+router.get('/handbags/:id', handbag_controlers.handbag_detail);
+
 module.exports = router;
