@@ -45,7 +45,7 @@ exports.handbag_create_post = async function(req, res) {
     }
 // res.send('NOT IMPLEMENTED: handbag create POST');
 };
-// Handle handbag delete form on DELETE.
+// Handle handbag delete on DELETE.
 exports.handbag_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
@@ -56,7 +56,6 @@ exports.handbag_delete = async function(req, res) {
         res.status(500)
         res.send(`{"error": Error deleting ${err}}`);
     }
- //res.send('NOT IMPLEMENTED: handbag delete DELETE ' + req.params.id);
 };
 // Handle handbag update form on PUT.
 exports.handbag_update_put = async function(req, res) {
