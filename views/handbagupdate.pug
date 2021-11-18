@@ -1,10 +1,15 @@
 extends layout
+
 block content
  h1= title
- - let handbagid = toShow._id
- - let handbagname = toShow.bag_name
- - let handbagcolor = toShow.bag_color
- - let handbagcost = toShow.bag_cost
+
+ if (toShow == null)
+    h2 No instance to update
+ else
+    - let handbagid = toShow._id
+    - let handbagname = toShow.bag_name
+    - let handbagcolor = toShow.bag_color
+    - let handbagcost = toShow.bag_cost
 
  div.row(class='mb-2')
     div.mr-1 ID is
