@@ -16,4 +16,7 @@ router.get('/handbags/:id', handbag_controlers.handbag_detail);
 /* GET detail handbag page */
 router.get('/detail', handbag_controlers.handbag_view_one_Page);
 
+/* GET create costume page */
+router.get('/create', handbag_controlers.handbag_create_Page);
+
 module.exports = router;
