@@ -13,7 +13,7 @@ exports.handbag_list = async function(req, res) {
 };
 // for a specific handbag.
 exports.handbag_detail = async function(req, res) {
-    console.log("detail" + req.params.id)
+    console.log("details" + req.params.id)
     try {
         result = await Handbag.findById(req.params.id)
         res.send(result)
@@ -90,5 +90,19 @@ exports.handbag_view_all_Page = async function(req, res) {
     catch(err){
     res.status(500);
     res.send(`{"error": ${err}}`);
+    }
+   };
+
+// Handle a show one view with id specified by query
+exports.handbag_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Handbag.findById( req.query.id)
+    res.render('handbagdetail',
+   { title: 'Handbag Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
    };

@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/handbag', handbagRouter);
+app.use('/handbags', handbagRouter);
 app.use('/addmods', addModsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);

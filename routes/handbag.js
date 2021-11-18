@@ -13,4 +13,7 @@ router.get('/', handbag_controlers.handbag_view_all_Page );
 // GET request for one handbag.
 router.get('/handbags/:id', handbag_controlers.handbag_detail);
 
+/* GET detail handbag page */
+router.get('/detail', handbag_controlers.handbag_view_one_Page);
+
 module.exports = router;
