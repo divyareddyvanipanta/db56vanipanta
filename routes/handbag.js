@@ -22,4 +22,7 @@ router.get('/create', handbag_controlers.handbag_create_Page);
 /* GET create update page */
 router.get('/update', handbag_controlers.handbag_update_Page);
 
+/* GET create costume page */
+router.get('/delete', handbag_controlers.handbag_delete_Page);
+
 module.exports = router;
