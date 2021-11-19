@@ -14,7 +14,7 @@ block content
  div.row(class='mb-2')
     div.mr-1 ID is
     div #{toShow._id}
-    - let actionid = "/resource/handbags/" + handbagid
+    - let actionid = "/resource/handbags/" + toShow._id
     form(id='HandbagForm', action= actionid, method="PUT")
         div.form-group
             label.handbagAttr(for='bag_name') Handbag Name
