@@ -6,19 +6,19 @@ block content
     h2 No instance to display here
  else
     - let handbagid = toShow._id
-    - let handbagname = toShow.bag_name
-    - let handbagcolor = toShow.bag_color
-    - let handbagcost = toShow.bag_cost
+    - let bag_name = toShow.bag_name
+    - let bag_color = toShow.bag_color
+    - let bag_cost = toShow.bag_cost
     div
     div.row
     div(class='handbagAttr mr-3') Handbag ID is:
     div #{handbagid}
     div.row
     div(class='handbagAttr mr-3') Handbag Name is:
-    div #{handbagname}
+    div #{bag_name}
     div.row
     div(class='handbagAttr mr-3') Handbag Color is:
-    div #{handbagcolor}
+    div #{bag_color}
     div.row
     div(class='handbagAttr mr-3') Handbag Cost is:
-    div #{handbagcost}
+    div #{bag_cost}

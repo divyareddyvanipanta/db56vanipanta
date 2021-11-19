@@ -7,24 +7,24 @@ block content
     h2 No instance to update
  else
     - let handbagid = toShow._id
-    - let handbagname = toShow.bag_name
-    - let handbagcolor = toShow.bag_color
-    - let handbagcost = toShow.bag_cost
+    - let bag_name = toShow.bag_name
+    - let bag_color = toShow.bag_color
+    - let bag_cost = toShow.bag_cost
 
  div.row(class='mb-2')
     div.mr-1 ID is
-    div #{handbagid}
+    div #{toShow._id}
     - let actionid = "/resource/handbags/" + handbagid
     form(id='HandbagForm', action= actionid, method="PUT")
         div.form-group
             label.handbagAttr(for='bag_name') Handbag Name
-            input#bag_name(type='text', name='bag_name', value= handbagname )
+            input#bag_name(type='text', name='bag_name', value= toShow.bag_name )
         div.form-group
             label.handbagAttr(for='bag_color') Handbag Color
-            input#bag_color(type='text', name='bag_color', value= handbagcolor )
+            input#bag_color(type='text', name='bag_color', value= toShow.bag_color )
         div.form-group
             label.handbagAttr(for='bag_cost') Handbag Cost
-            input#bag_cost(type='number', name='bag_cost', value= handbagcost )
+            input#bag_cost(type='number', name='bag_cost', value= toShow.bag_cost )
         input(type="submit")
  script.
     document.forms['HandbagForm'].addEventListener('submit', (event) => {
