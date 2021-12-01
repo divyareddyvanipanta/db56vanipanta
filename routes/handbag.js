@@ -28,12 +28,12 @@ router.get('/handbags/:id', handbag_controlers.handbag_detail);
 router.get('/detail', handbag_controlers.handbag_view_one_Page);
 
 /* GET create costume page */
-router.get('/create', handbag_controlers.handbag_create_Page);
+router.get('/create', secured, handbag_controlers.handbag_create_Page);
 
 /* GET create update page */
 router.get('/update', secured, handbag_controlers.handbag_update_Page);
 
 /* GET create costume page */
-router.get('/delete', handbag_controlers.handbag_delete_Page);
+router.get('/delete', secured, handbag_controlers.handbag_delete_Page);
 
 module.exports = router;
