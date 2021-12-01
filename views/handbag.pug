@@ -1,17 +1,23 @@
 extends layout
 
 block content
+  - let createPage = `dispatch(\"/handbags/create")`
+  button.btn( class="btn-primary ml-1", onclick= createPage) Click here to Create 
   h1= title
   - let results = theHandbags
   div(class="container-fuild")
     div(class="row m-1")
       each result,index in results
         - let destination = `dispatch(\"/handbags/update?id=${result._id}\")`
+        - let detailView = `dispatch(\"/handbags/detail?id=${result._id}\")`
+        - let deleteView = `dispatch(\"/handbags/delete?id=${result._id}\")`
         div(class = "row-sm-2 m-1" id=index onclick=`buy(${index})`) 
           p #{result.bag_name}
           p #{result.bag_color}
           p #{result.bag_cost}
           button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-primary ml-1", onclick= detailView, style="margin-left: 5px") Detail
+          button.btn( class="btn-primary ml-1", onclick= deleteView, style="margin-left: 5px") Delete
 
   script.
     function buy(element){
